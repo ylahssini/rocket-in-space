@@ -1,0 +1,119 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  border: 0;
+
+  &:before,
+  &:after {
+    box-sizing: border-box;
+  }
+}
+
+html,
+body {
+  overflow: hidden;
+}
+
+body {
+  background-color: #060911;
+  width: 100%;
+  height: 100vh;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+@keyframes rocket {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-1rem);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+div {
+  &:before {
+    content: "";
+    background-color: rgb(218, 166, 23);
+    background-image: linear-gradient(
+      45deg,
+      hsl(55deg 100% 50%) 0%,
+      hsl(82deg 85% 64%) 20%,
+      hsl(130deg 79% 71%) 29%,
+      hsl(163deg 76% 61%) 36%,
+      hsl(178deg 65% 60%) 43%,
+      hsl(190deg 55% 68%) 50%,
+      hsl(176deg 50% 65%) 57%,
+      hsl(154deg 49% 69%) 64%,
+      hsl(107deg 44% 73%) 71%,
+      hsl(65deg 48% 69%) 80%,
+      hsl(39deg 89% 74%) 100%
+    );
+    box-shadow: 0 0 40px 20px rgba(252, 218, 24, 0.25);
+    border-radius: 50em;
+    display: block;
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    z-index: 2;
+  }
+}
+
+figure {
+  animation: rocket 3s infinite ease-in-out;
+  position: relative;
+  z-index: 3;
+
+  > img {
+    transition: transform 0.3s ease;
+  }
+}
+
+@keyframes star {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+
+  50% {
+    box-shadow: 0 0 4px 1px rgba(255, 255, 255, 0.8);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+.star {
+  animation: star 2s infinite ease-in-out;
+  background-color: #fff;
+  position: fixed;
+  inset: 0;
+  border-radius: 2px;
+  display: block;
+  width: 4px;
+  height: 4px;
+}
+
+@for $i from 1 through 200 {
+  .star:nth-of-type(#{$i}) {
+    $size: random(4) * 1px;
+
+    left: random(100) * 1%;
+    top: random(100) * 1%;
+    opacity: (random(100) - 20) / 100;
+    width: $size;
+    height: $size;
+    animation-delay: #{random(10)}s;
+  }
+}
