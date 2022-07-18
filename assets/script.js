@@ -9,5 +9,6 @@ rocketSelector.addEventListener("mousemove", function (event) {
 });
 
 rocketSelector.addEventListener("mouseleave", function () {
+  rocketImageSelector.style.transition = "transform .3s ease";
   rocketImageSelector.style.transform = "translate3d(0, 0, 0)";
 });
