@@ -74,10 +74,6 @@ figure {
   animation: rocket 3s infinite ease-in-out;
   position: relative;
   z-index: 3;
-
-  > img {
-    transition: transform 0.3s ease;
-  }
 }
 
 small {
